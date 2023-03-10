@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 interface IProps {
@@ -5,5 +6,17 @@ interface IProps {
 }
 
 export default function Seo({title}: IProps) {
-    return <title>{title} | Gatsby Beginner - DevStickers!</title>;
+    const data = useStaticQuery<Queries.SeoDataQuery>(graphql`
+        query SeoData {
+            site {
+                siteMetadata {
+                    description
+                    siteUrl
+                    title
+                }
+            }
+        }
+    `);
+    console.log(data);
+    return <title>{title} | {data.site?.siteMetadata?.title}</title>;
 }
