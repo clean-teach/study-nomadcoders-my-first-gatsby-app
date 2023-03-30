@@ -7,7 +7,7 @@ import Seo from '../components/Seo';
 export default function IndexPage({ data }: PageProps<Queries.StickersQuery>) {
   return (
     <Layout title="Welcome to DevStickers">
-      <p>Hello Welcome to Home 👏</p>
+      <p>Hello Welcome to Home</p>
       <div className="grid">
         {data.allContentfulStickerPack.nodes.map((sticker) => (
           <article key={sticker.id}>
